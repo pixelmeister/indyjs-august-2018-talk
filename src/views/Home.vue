@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+	<ion-page class="ion-page">
+		<toolbar title="Home"/>
+		<ion-content class="ion-content" padding>
+			<router-link to="/page">Go to Star Wars GraphQL page</router-link>
+		</ion-content>
+	</ion-page>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script>
+import Vue from 'vue';
+import Toolbar from '../components/ToolBar.vue';
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+export default {
+	components: {
+		Toolbar
+	},
+	data() {
+		return {
+			// greeting: 'Hello'
+		};
+	}
+};
 </script>

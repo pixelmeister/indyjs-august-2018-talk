@@ -9,6 +9,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@modus/ionic-vue": "^1.0.5",
     "apollo-cache-inmemory": "^1.2.7",
     "apollo-client": "^2.3.8",
     "apollo-link": "^1.2.2",
@@ -24,7 +25,10 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@types/babel-core": "^6.25.5",
+    "@types/graphql": "^0.13.4",
     "@types/jest": "^23.1.4",
+    "@types/node-sass": "^3.10.32",
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-e2e-cypress": "^3.0.0",
     "@vue/cli-plugin-pwa": "^3.0.0",
