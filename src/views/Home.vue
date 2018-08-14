@@ -2,7 +2,7 @@
 	<ion-page class="ion-page">
 		<toolbar title="Home"/>
 		<ion-content class="ion-content" padding>
-			<router-link to="/page">Go to Star Wars GraphQL page</router-link>
+			<router-link to="/page">Go to GitHub GraphQL page</router-link>
 		</ion-content>
 	</ion-page>
 </template>

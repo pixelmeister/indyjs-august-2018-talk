@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
+import { ApolloLink } from 'apollo-link';
+import { HttpLink, createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import VueApollo from 'vue-apollo';
 import { IonicVueRouter, IonicAPI } from '@modus/ionic-vue';
@@ -12,14 +13,44 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
-const httpLink = new HttpLink({
-	// You should use your grapqql URL here
-	uri: 'https://api.github.com/graphql'
+// const customFetch = (uri, options) => {
+// 	const { header } = Hawk.client.header('http://example.com:8000/resource/1?b=1&a=2', 'POST', {
+// 		credentials: credentials,
+// 		ext: 'some-app-data'
+// 	});
+// 	options.headers.Authorization = header;
+// 	return fetch(uri, options);
+// };
+
+// const httpLink = createHttpLink({ fetch: customFetch });
+
+// const httpLink = new HttpLink({
+// 	// You should use your grapqql URL here
+// 	uri: 'https://api.github.com/graphql',
+// 	fetch: {}
+// 	// opts: {
+// 	// 	headers: {
+// 	// 		Authorization: `bearer ${localStorage.getItem('ghToken') || ''}`
+// 	// 	}
+// 	// }
+// });
+
+const httpLink = createHttpLink({ uri: 'https://api.github.com/graphql' });
+const middlewareLink = new ApolloLink((operation, forward: any) => {
+	operation.setContext({
+		headers: {
+			Authorization: `bearer ${process.env.VUE_APP_GH_TOKEN}`
+		}
+	});
+	return forward(operation);
 });
+
+// use with apollo-client
+const link = middlewareLink.concat(httpLink);
 
 // Create the apollo client
 const apolloClient = new ApolloClient({
-	link: httpLink,
+	link,
 	cache: new InMemoryCache(),
 	connectToDevTools: true
 });
