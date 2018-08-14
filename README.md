@@ -17,7 +17,7 @@ yarn install
 ## To demo on Github
 
 -   create an GitHub personal access token: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
--   create a .env file (git ignored) liek the sample.env.txt
+-   create a .env file (git ignored) like the sample.env.txt
 
 ### Compiles and hot-reloads for development
 
