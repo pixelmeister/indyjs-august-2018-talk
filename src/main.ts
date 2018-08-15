@@ -70,7 +70,10 @@ const apolloProvider = new VueApollo({
 
 new Vue({
 	router: new IonicVueRouter({
-		routes: [{ path: '/', component: Home }, { path: '/page', component: Page }]
+		routes: [
+			{ path: '/', component: Home },
+			{ path: '/page', component: () => import(/* webpackChunkName: "page" */ './views/Page.vue') }
+		]
 	}),
 	store,
 	provide: apolloProvider.provide(),
