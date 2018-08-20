@@ -9,7 +9,6 @@ import Page from './views/Page.vue';
 import Home from './views/Home.vue';
 
 import App from './App.vue';
-import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
@@ -77,5 +76,5 @@ new Vue({
 	}),
 	store,
 	provide: apolloProvider.provide(),
-	render: h => h(App)
-}).$mount('#app');
+	render: (h: any) => h(App)
+} as any).$mount('#app');
